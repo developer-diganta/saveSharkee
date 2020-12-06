@@ -4,6 +4,10 @@ var controller=0;
 $(document).keypress(function(){
   if(i==0){
     i=1;
+    $(".start").removeClass("start").addClass("done");
+    $("#point").addClass("done");
+    $("#math").removeClass("done");
+    $("#maths").removeClass("done");
     gamescreen();
     // ques();
   }
@@ -12,13 +16,15 @@ $(document).keypress(function(){
 
 var ans=0;
 $("button").click(function(){
-  if(controller==7 || i==4){
-    if(i==4){
-      $("h5").html("You won!");
+  if(controller==7 || i==5){
+    if(i==5){
+      $("#maths").addClass("done2");
+      $(".end").removeClass("done").html("You won!");
       return;
     }
     else{
-      $("h5").html("You lost!");
+      $("#maths").addClass("done2");
+      $(".end").removeClass("done").html("You lost!");
       return;
     }
   }
@@ -76,11 +82,12 @@ function ques(){
 
 function gamescreen(){
   var s="";
-  for(j=i;j<=4;j++){
-    s=s+"_";
+  for(j=4;j>=i;j--){
+    s=s+"------";
   }
   console.log(s);
-  $("h1").html("I"+s+"F");
+  $("#line").html("<img src='rod.png' class='rod'><span style='color:red;'>"+s+"</span> <img src='sharkee.png' class='fish'>");
+
   checkpos();
   ques();
 }
